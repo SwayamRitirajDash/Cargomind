@@ -14,7 +14,10 @@ import {
   InfoCircleIcon,
   RouteIcon,
   RadarIcon,
+  CreditCardIcon,
+  UserIcon,
 } from "../icons/Hugeicons";
+import { getStoredAuth, subscribeAuthChange, AuthSession } from "../../lib/api/auth";
 import OpeningScreen from "../OpeningScreen";
 import LogisticsSearchModal from "../search/LogisticsSearchModal";
 import LanguageSwitcher from "../LanguageSwitcher";
@@ -29,16 +32,20 @@ export default function TopNavigation() {
   const [searchModalOpen, setSearchModalOpen] = useState(false);
   const [modulesDropdownOpen, setModulesDropdownOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("overview");
+  const [authSession, setAuthSession] = useState<AuthSession | null>(null);
 
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Close mobile menu and dropdown on route changes
+  // Subscribe to auth session changes
   useEffect(() => {
-    setMobileMenuOpen(false);
-    setModulesDropdownOpen(false);
-  }, [pathname]);
+    setAuthSession(getStoredAuth());
+    const unsubscribe = subscribeAuthChange((session) => {
+      setAuthSession(session);
+    });
+    return () => unsubscribe();
+  }, []);
 
-  // Close dropdown on outside click or escape key
+  // Close dropdown on outside click
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -75,8 +82,16 @@ export default function TopNavigation() {
       setActiveSection("ai-intelligence");
       return;
     }
+    if (pathname.includes("/payments")) {
+      setActiveSection("payments");
+      return;
+    }
     if (pathname.includes("/about")) {
       setActiveSection("about");
+      return;
+    }
+    if (pathname.includes("/login")) {
+      setActiveSection("login");
       return;
     }
 
@@ -129,6 +144,7 @@ export default function TopNavigation() {
     { label: t("digitalTwin"), href: `/${locale}/map`, section: "map", icon: RouteIcon },
     { label: t("accessibility"), href: `/${locale}/accessibility`, section: "accessibility", icon: RadarIcon },
     { label: t("aiIntelligence"), href: `/${locale}/ai-intelligence`, section: "ai-intelligence", icon: AiBrainIcon },
+    { label: t("payments"), href: `/${locale}/payments`, section: "payments", icon: CreditCardIcon },
     { label: t("about"), href: `/${locale}/about`, section: "about", icon: InfoCircleIcon },
   ];
 
@@ -271,9 +287,6 @@ export default function TopNavigation() {
               )}
             </div>
 
-            {/* Divider between Modules & Platform Suite */}
-            <div className="h-3.5 w-px bg-neutral-300 dark:bg-neutral-700 mx-1" />
-
             {/* Platform Pages */}
             {pageLinks.map((item) => {
               const isPageActive = pathname.includes(item.section);
@@ -337,10 +350,39 @@ export default function TopNavigation() {
               <RefreshIcon size={14} strokeWidth={1.8} />
             </button>
 
+            {/* User Identity / Sign In Button */}
+            <Link
+              href={`/${locale}/login`}
+              className={`hidden md:inline-flex items-center gap-1.5 h-9 px-3 text-xs font-mono rounded-full border transition-all shadow-2xs cursor-pointer ${
+                pathname.includes("/login")
+                  ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 border-neutral-900 dark:border-white font-semibold"
+                  : "border-neutral-200 dark:border-neutral-800 bg-neutral-50/80 dark:bg-neutral-900/80 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700 text-neutral-800 dark:text-neutral-200"
+              }`}
+              title={authSession ? `Active: ${authSession.name} (${authSession.tenantRole.toUpperCase()})` : t("login")}
+            >
+              <div
+                className={`h-5 w-5 rounded-full flex items-center justify-center text-[10px] font-bold ${
+                  pathname.includes("/login")
+                    ? "bg-white text-neutral-950 dark:bg-neutral-950 dark:text-white"
+                    : "bg-neutral-900 text-white dark:bg-neutral-100 dark:text-neutral-950"
+                }`}
+              >
+                {authSession ? authSession.name.charAt(0).toUpperCase() : <UserIcon size={11} />}
+              </div>
+              <span className="text-[11px] font-sans font-medium truncate max-w-[95px]">
+                {authSession ? authSession.name : t("login")}
+              </span>
+              {authSession && (
+                <span className="hidden xl:inline-flex px-1.5 py-0.5 rounded text-[9px] font-mono uppercase bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300 font-bold border border-emerald-200 dark:border-emerald-800">
+                  {authSession.tenantRole}
+                </span>
+              )}
+            </Link>
+
             {/* Quick Action Button: Launch AI */}
             <Link
               href={`/${locale}/ai-intelligence`}
-              className="hidden sm:inline-flex items-center h-9 px-3.5 text-xs font-semibold uppercase tracking-wider bg-neutral-900 text-white hover:bg-black dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200 transition-all rounded-full shadow-xs active:scale-95 whitespace-nowrap"
+              className="hidden 2xl:inline-flex items-center h-9 px-3.5 text-xs font-semibold uppercase tracking-wider bg-neutral-900 text-white hover:bg-black dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200 transition-all rounded-full shadow-xs active:scale-95 whitespace-nowrap"
             >
               {t("launchAI")}
             </Link>

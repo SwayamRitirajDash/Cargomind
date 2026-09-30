@@ -13,6 +13,8 @@
     "digitalTwin": "Map Twin",
     "aiIntelligence": "AI Intelligence",
     "about": "About",
+    "payments": "Payments",
+    "login": "Sign In",
     "launchAI": "LAUNCH AI",
     "searchPlaceholder": "Search routes, nodes, shipments...",
     "searchTitle": "Search Directory (Cmd+K)",
@@ -728,6 +730,60 @@
       "tempControlLabel": "Refrigeration / Temperature Controlled",
       "submit": "Add to Dynamic Fleet Registry",
       "cancel": "Cancel"
+    }
+  },
+  "auth": {
+    "title": "Tenant Authentication & Corridor Access",
+    "subtitle": "Secure multi-tenant gateway for Shippers, Fleet Carriers, and Corridor Command operations.",
+    "breadcrumb": "08 // ACCESS GATEWAY",
+    "systemBadge": "JWT HS-256 + MULTI-TENANT ISOLATION",
+    "tabs": {
+      "demo": "⚡ Instant Demo Access",
+      "login": "🔐 Account Sign In",
+      "register": "📝 Register Organization"
+    },
+    "demo": {
+      "title": "Pre-Configured Demo Identities",
+      "subtitle": "Select any verified role below to immediately impersonate a corridor stakeholder with active simulation permissions.",
+      "switchAction": "Switch Profile",
+      "activeIdentity": "Currently Active",
+      "quickLogin": "Authenticate As"
+    },
+    "roles": {
+      "shipper": "Shipper / Cargo Owner",
+      "carrier": "Fleet Carrier / Transporter",
+      "admin": "Corridor Operations Admin"
+    },
+    "form": {
+      "identifierLabel": "Email, Tenant Name or UUID",
+      "identifierPlaceholder": "e.g. shipper@cargomind.in or tea-consortium",
+      "passwordLabel": "Password (Optional for Demo)",
+      "passwordPlaceholder": "Enter your corridor passphrase",
+      "roleLabel": "Select Operational Role",
+      "orgNameLabel": "Organization / Enterprise Name",
+      "orgNamePlaceholder": "e.g. Brahmaputra Cold Logistics Ltd.",
+      "emailLabel": "Official Contact Email",
+      "emailPlaceholder": "e.g. operations@brahmaputra.in",
+      "regionLabel": "Operating Region / Primary Hub",
+      "signInButton": "Sign In to Corridor",
+      "registerButton": "Register & Launch Session",
+      "signingIn": "Authenticating...",
+      "registering": "Registering Tenant...",
+      "successLogin": "Successfully authenticated! Redirecting...",
+      "successRegister": "Tenant registered successfully! Redirecting..."
+    },
+    "security": {
+      "encrypted": "256-bit Encrypted Token",
+      "zeroTrust": "Zero-Trust Node Verification",
+      "isolated": "Isolated Tenant Data Ledger"
+    },
+    "profile": {
+      "signedInAs": "Signed in as",
+      "tenantId": "Tenant UUID",
+      "role": "Role",
+      "region": "Assigned Hub",
+      "signOut": "Sign Out",
+      "manageSession": "Switch Identity"
     }
   }
 }

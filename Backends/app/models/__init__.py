@@ -17,6 +17,18 @@ from app.models.roadsense import (
     VehicleProfileType,
     ClearanceClass,
 )
+from app.models.dispatch_execution import (
+    EPODRecord,
+    DigitalPassport,
+    ConsolidationGroup,
+    CrossDockPlan,
+    HubEnergy,
+    AuditLogEvent,
+    CarrierSettlement,
+    EmergencyIncident,
+    EmergencyType,
+    IncidentSeverity,
+)
 
 __all__ = [
     "Base",
@@ -49,6 +61,16 @@ __all__ = [
     "RoadWidthClass",
     "VehicleProfileType",
     "ClearanceClass",
+    "EPODRecord",
+    "DigitalPassport",
+    "ConsolidationGroup",
+    "CrossDockPlan",
+    "HubEnergy",
+    "AuditLogEvent",
+    "CarrierSettlement",
+    "EmergencyIncident",
+    "EmergencyType",
+    "IncidentSeverity",
 ]
 
 

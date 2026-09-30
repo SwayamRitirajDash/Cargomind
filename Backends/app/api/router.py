@@ -15,6 +15,8 @@ from app.api.accessibility import router as accessibility_router
 from app.api.weather import router as weather_router
 from app.api.sensors import router as sensors_router
 from app.api.st_gnn import router as st_gnn_router
+from app.api.cargomind_v4 import router as cargomind_v4_router
+from app.api.payments import router as payments_router
 
 api_router = APIRouter(prefix="/api")
 
@@ -34,6 +36,5 @@ api_router.include_router(st_gnn_router)
 api_router.include_router(temperature_logs_router)
 api_router.include_router(sync_router)
 api_router.include_router(chat_router)
-
-
-
+api_router.include_router(cargomind_v4_router)
+api_router.include_router(payments_router)

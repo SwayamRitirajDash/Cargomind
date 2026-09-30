@@ -13,6 +13,8 @@
     "digitalTwin": "डिजिटल मैप",
     "aiIntelligence": "AI इंटेलिजेंस",
     "about": "परिचय",
+    "payments": "भुगतान",
+    "login": "साइन इन",
     "launchAI": "LAUNCH AI",
     "searchPlaceholder": "मार्ग, नोड्स, शिपमेंट खोजें...",
     "searchTitle": "निर्देशिका खोजें (Cmd+K)",
@@ -728,6 +730,60 @@
       "tempControlLabel": "तापमान नियंत्रण / रीफर सुविधा",
       "submit": "फ्लीट रजिस्ट्री में जोड़ें",
       "cancel": "रद्द करें"
+    }
+  },
+  "auth": {
+    "title": "किरायेदार प्रमाणीकरण एवं कॉरिडोर एक्सेस",
+    "subtitle": "शिपर्स, फ्लीट कैरियर्स और कॉरिडोर कमांड संचालन के लिए सुरक्षित मल्टी-टेनेंट गेटवे।",
+    "breadcrumb": "08 // एक्सेस गेटवे",
+    "systemBadge": "JWT HS-256 + मल्टी-टेनेंट आइसोलेशन",
+    "tabs": {
+      "demo": "⚡ त्वरित डेमो एक्सेस",
+      "login": "🔐 खाता साइन इन",
+      "register": "📝 संगठन पंजीकृत करें"
+    },
+    "demo": {
+      "title": "पूर्व-कॉन्फ़िगर की गई डेमो पहचानें",
+      "subtitle": "सक्रिय सिमुलेशन अनुमतियों के साथ कॉरिडोर हितधारक के रूप में काम करने के लिए नीचे किसी भी सत्यापित भूमिका का चयन करें।",
+      "switchAction": "प्रोफ़ाइल बदलें",
+      "activeIdentity": "वर्तमान में सक्रिय",
+      "quickLogin": "प्रमाणित करें"
+    },
+    "roles": {
+      "shipper": "शिपर / कार्गो मालिक",
+      "carrier": "फ्लीट कैरियर / ट्रांसपोर्टर",
+      "admin": "कॉरिडोर ऑपरेशंस एडमिन"
+    },
+    "form": {
+      "identifierLabel": "ईमेल, किरायेदार का नाम या UUID",
+      "identifierPlaceholder": "उदा. shipper@cargomind.in या tea-consortium",
+      "passwordLabel": "पासवर्ड (डेमो के लिए वैकल्पिक)",
+      "passwordPlaceholder": "अपना पासवर्ड दर्ज करें",
+      "roleLabel": "परिचालन भूमिका चुनें",
+      "orgNameLabel": "संगठन / उद्यम का नाम",
+      "orgNamePlaceholder": "उदा. ब्रह्मपुत्र कोल्ड लॉजिस्टिक्स लि.",
+      "emailLabel": "आधिकारिक संपर्क ईमेल",
+      "emailPlaceholder": "उदा. operations@brahmaputra.in",
+      "regionLabel": "संचालन क्षेत्र / प्राथमिक हब",
+      "signInButton": "कॉरिडोर में साइन इन करें",
+      "registerButton": "पंजीकृत करें और सत्र शुरू करें",
+      "signingIn": "प्रमाणीकरण हो रहा है...",
+      "registering": "पंजीकरण हो रहा है...",
+      "successLogin": "सफलतापूर्वक प्रमाणित! पुनर्निर्देशित किया जा रहा है...",
+      "successRegister": "किरायेदार पंजीकृत हुआ! पुनर्निर्देशित किया जा रहा है..."
+    },
+    "security": {
+      "encrypted": "256-बिट एन्क्रिप्टेड टोकन",
+      "zeroTrust": "ज़ीरो-ट्रस्ट नोड सत्यापन",
+      "isolated": "पृथक किरायेदार डेटा लेज़र"
+    },
+    "profile": {
+      "signedInAs": "के रूप में साइन इन हैं",
+      "tenantId": "किरायेदार UUID",
+      "role": "भूमिका",
+      "region": "हब",
+      "signOut": "साइन आउट",
+      "manageSession": "पहचान बदलें"
     }
   }
 }
