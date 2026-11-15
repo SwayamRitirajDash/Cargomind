@@ -1,4 +1,4 @@
-﻿@echo off
+@echo off
 chcp 65001 > nul
 set PYTHONUTF8=1
 set PYTHONIOENCODING=utf-8
@@ -41,5 +41,5 @@ echo   CARGOMIND IS LIVE AND RUNNING!
 echo   * Web Portal Dashboard: http://localhost:3000
 echo   * FastAPI API Docs:     http://127.0.0.1:8000/docs
 echo   * Multi-Modal Modes:    Road, Rail (FOIS), Mountain (SRTM), Riverine
-echo   * AI Assistant:         Multi-lingual Voice & Offline-First Assistant
+echo   * AI Assistant:         Multi-lingual Voice ^& Offline-First Assistant
 echo ======================================================================
